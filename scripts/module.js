@@ -42,7 +42,11 @@ const addAppraisedControlsForGM = (html, appraised, showPrice) => {
 
 const showHidePrice = async (app, html, data) => {
   const defaultShowPrice = await game.settings.get(moduleName, defaultShowPriceSetting)
-  const showPrice = data.item.getFlag(moduleName, showPriceFlag) || defaultShowPrice;
+  let showPrice = data.item.getFlag(moduleName, showPriceFlag);
+  if (showPrice === undefined) {
+    showPrice = defaultShowPrice
+  }
+  
   const appraised = data.item.getFlag(moduleName, appraisedFlag) || '';
 
   if (game.user.isGM) {
