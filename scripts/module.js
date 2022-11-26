@@ -17,7 +17,7 @@ Hooks.on('init', () => {
   });
 })
 
-const showPriceDescToPlayer = (html, appraised) => {
+const showAppraisedToPlayer = (html, appraised) => {
   const priceInput = $(html).find('input[name="system.price"]');
   priceInput.replaceWith(
     `<input type="text" name="flags.${moduleName}.${appraisedFlag}" value="${appraised}" data-dtype="String">`
@@ -28,14 +28,14 @@ const addAppraisedControlsForGM = (html, appraised, showPrice) => {
   const priceInput = $(html).find('input[name="system.price"]');
   priceInput.closest('.form-group').after(
     `<div class="form-group">
+      <label>Appraised</label>
+      <input type="text" name="flags.${moduleName}.${appraisedFlag}" value="${appraised}" data-dtype="String">
+    </div>
+    <div class="form-group">
       <label>Show Price</label>
       <input type="checkbox" name="flags.${moduleName}.${showPriceFlag}" data-dtype="Boolean" ${
         showPrice ? 'checked' : ''
       } style="max-width:16px">
-    </div>
-    <div class="form-group">
-      <label>Appraised</label>
-      <input type="text" name="flags.${moduleName}.${appraised}" value="${appraised}" data-dtype="String">
     </div>`
   );
 };
