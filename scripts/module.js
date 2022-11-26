@@ -10,6 +10,7 @@ const defaultAppraisedFlag = 'defaultAppraised'
 Hooks.on('init', () => {
   game.settings.register(moduleName, defaultShowPriceSetting, {
     name: 'Show price by default',
+    hint: 'Sets default behaviour for new items',
     scope: 'world',
     config: true,
     type: Boolean,
@@ -46,7 +47,7 @@ const showHidePrice = async (app, html, data) => {
   if (showPrice === undefined) {
     showPrice = defaultShowPrice
   }
-  
+
   const appraised = data.item.getFlag(moduleName, appraisedFlag) || '';
 
   if (game.user.isGM) {
