@@ -58,4 +58,3 @@ const showHidePrice = async (app, html, data) => {
 };
 
 Hooks.on('renderItemSheet5e', showHidePrice);
-Hooks.on('renderTidy5eItemSheet', showHidePrice);
